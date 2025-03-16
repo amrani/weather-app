@@ -1,0 +1,61 @@
+<div class="weather weather__<%= @theme %>">
+  <div class="weather--search">
+    <%= form_tag(root_path, {
+      method: "get",
+      autocomplete: "off",
+      "data-lpignore" => "true",
+      "data-1p-ignore" => "true",
+      id: "non-login-form"
+    }) do %>
+      <%= text_field_tag(
+        :address,
+        params[:address],
+        placeholder: "Your address",
+        "data-lpignore" => "true",
+        "data-1p-ignore" => "true",
+        "data-form-type" => "other",
+        "data-1p-type" => "none"
+      ) %>
+      <%= submit_tag("Go") %>
+    <% end %>
+  </div>
+
+  <% if @forecast&.present? %>
+    <div class="weather--current-forecast">
+      <div title="<%= @forecast.location.name %>" class="weather--city"><%= truncate(@forecast.location.name, :length => 35) %></div>
+      <div class="weather--current-temp"><%= @forecast.temperature %>°</div>
+      <div class="weather--h-l">H:<%= @forecast.upcoming_days.first.temperature_high %>° L:<%= @forecast.upcoming_days.first.temperature_low %>°</div>
+    </div>
+
+    <div class="weather--upcoming-hours">
+      <% @forecast.upcoming_hours.each_with_index do |upcoming_hour, index| %>
+        <div class="weather--upcoming-hour">
+          <div><%= index == 0 ? "Now" : upcoming_hour.time.strftime("%l %p") %></div>
+          <div><%= upcoming_hour.temperature %>°</div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="weather--upcoming-days">
+      <div class="weather--upcoming-days-header">
+        <%= @forecast.upcoming_days.size %>-DAY FORECAST
+      </div>
+      <% @forecast.upcoming_days.each_with_index do |upcoming_day, index| %>
+        <div class="weather--upcoming-day">
+          <div><%= index == 0 ? "Today" : upcoming_day.date.strftime("%A") %></div>
+          <div>L:<%= upcoming_day.temperature_low %>° - H:<%= upcoming_day.temperature_high %>°</div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="weather--current-forecast">
+      <%= params[:address].present? ? "Sorry, we couldn't find a forecast for that address" : "Search your address!" %>
+    </div>
+  <% end %>
+
+  <% if @forecast.present? %>
+    <div class="weather--footer">
+      Forcasted <%= time_ago_in_words(@forecast.forecasted_at) %> ago
+    </div>
+  <% end %>
+</div>

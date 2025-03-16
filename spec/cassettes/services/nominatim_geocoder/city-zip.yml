@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nominatim.openstreetmap.org/search?addressdetails=1&format=json&limit=1&q=Pembroke%20Pines%2033028
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - nominatim.openstreetmap.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 16 Mar 2025 01:57:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '617'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sicGxhY2VfaWQiOjI4MjYxNzE2OSwibGljZW5jZSI6IkRhdGEgwqkgT3BlblN0cmVldE1hcCBjb250cmlidXRvcnMsIE9EYkwgMS4wLiBodHRwOi8vb3NtLm9yZy9jb3B5cmlnaHQiLCJvc21fdHlwZSI6InJlbGF0aW9uIiwib3NtX2lkIjoxMTc5NTAsImxhdCI6IjI2LjAwNjE5NDMiLCJsb24iOiItODAuMjg3MjA4NiIsImNsYXNzIjoiYm91bmRhcnkiLCJ0eXBlIjoiYWRtaW5pc3RyYXRpdmUiLCJwbGFjZV9yYW5rIjoxNiwiaW1wb3J0YW5jZSI6MC41NTA1MTczNTI1MjI5MjYxLCJhZGRyZXNzdHlwZSI6InN1YnVyYiIsIm5hbWUiOiJQZW1icm9rZSBQaW5lcyIsImRpc3BsYXlfbmFtZSI6IlBlbWJyb2tlIFBpbmVzLCBCcm93YXJkIENvdW50eSwgRmxvcmlkYSwgVW5pdGVkIFN0YXRlcyIsImFkZHJlc3MiOnsic3VidXJiIjoiUGVtYnJva2UgUGluZXMiLCJjb3VudHkiOiJCcm93YXJkIENvdW50eSIsInN0YXRlIjoiRmxvcmlkYSIsIklTTzMxNjYtMi1sdmw0IjoiVVMtRkwiLCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyIsImNvdW50cnlfY29kZSI6InVzIn0sImJvdW5kaW5nYm94IjpbIjI1Ljk5MjI0NzIiLCIyNi4wNjA5NTM1IiwiLTgwLjQ0MTg5OTgiLCItODAuMjEzNDgzNyJdfV0=
+  recorded_at: Sun, 16 Mar 2025 01:57:37 GMT
+recorded_with: VCR 6.3.1
